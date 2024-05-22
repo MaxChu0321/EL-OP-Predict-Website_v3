@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend # 指向含有Dockerfile的前端代碼目錄
+    container_name: quasar_frontend
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend # 指向含有Dockerfile的後端代碼目錄
+    container_name: fastapi_backend
+    networks:
+      - app-network
+
+  proxy:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - app-network
+    depends_on:
+      - frontend
+      - backend
+
+networks:
+  app-network:
+    driver: bridge
