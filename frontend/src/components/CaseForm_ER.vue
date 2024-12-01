@@ -52,7 +52,7 @@
     </div>
     <div class="row q-gutter-sm">
       <div class="q-pa-sm rounded-borders" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'">
-        Tumor close to Gallbladder or Hilum
+        Tumor close to gallbladder or hilum
         <q-option-group
           :options="[
             { label: 'No', value: 0, color: 'green' },
@@ -125,7 +125,11 @@
     </q-dialog>
 
     <!-- 提交按钮 -->
-    <div class="row q-gutter-md justify-end">
+    <div class="row q-gutter-md justify-between">
+      <div class="col-auto">
+        <DownloadExampleButton folderName="ER_Case" />
+      </div>
+      <div class="col-auto row q-gutter-sm">
         <q-btn unelevated color="red" label="Clear" @click="promptClearForm" />
         <q-btn unelevated color="teal-6" type="button" label="Demo" @click="demo" />
         <q-btn unelevated color="teal-6" type="submit" label="Submit" :loading="submitting">
@@ -133,6 +137,7 @@
             <q-spinner-cube color="white" />
           </template>
         </q-btn>
+      </div>
     </div>
   </q-form>
 
@@ -154,9 +159,13 @@ import { Notify } from 'quasar'
 import { api } from "boot/axios"
 import { useJobStore_ER } from 'stores/job'
 import { useTestCase_ER } from '../helpers/useDemo'
+import DownloadExampleButton from './DownloadExampleButton.vue';
 
 export default defineComponent({
   name: 'CaseForm_ER',
+  components: {
+    DownloadExampleButton
+  },
   emits: ['formSubmitted'],
   props: {
     initialValues: {

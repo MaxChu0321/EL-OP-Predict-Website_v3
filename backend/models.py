@@ -109,3 +109,72 @@ class PatientData_Surv(BaseModel):
     def dict(self, *args, **kwargs):
         original_dict = super().dict(*args, **kwargs)
         return {Surv_cli_features[key]: original_dict[key] for key in original_dict if key in Surv_cli_features.keys()}
+
+
+ER_cli_OP_features = {
+    'bclc': 'BCLC',
+    'tumor_number': 'Tumor number',
+    'tumor_size': 'Tumor size',
+    'k': 'K',
+    'ast': 'AST',
+    'afp': 'AFP',
+    'hbsag': 'HBsAg',
+    'albigrade': 'ALBIgrade',
+    'histologic_grade': 'Histologic grade',
+    'ishak': 'Ishak',
+    'steatosis_grade': 'Steatosis grade',
+    'bmi': 'BMI',
+    'mvi': 'MVI',
+}
+
+
+class PatientData_ER_OP(BaseModel):
+    bclc: float | None = None
+    tumor_number: float | None = None
+    tumor_size: float | None = None
+    k: float | None = None
+    ast: float | None = None
+    afp: float | None = None
+    hbsag: float | None = None
+    albigrade: float | None = None
+    histologic_grade: float | None = None
+    ishak: float | None = None
+    steatosis_grade: float | None = None
+    bmi: float | None = None
+    mvi: float | None = None
+    
+
+
+    def dict(self, *args, **kwargs):
+        original_dict = super().dict(*args, **kwargs)
+        return {ER_cli_OP_features[key]: original_dict[key] for key in original_dict if key in ER_cli_OP_features.keys()}
+
+
+ER_precli_OP_features = {
+    'bclc': 'BCLC',
+    'tumor_number': 'Tumor number',
+    'tumor_size': 'Tumor size',
+    'k': 'K',
+    'ast': 'AST',
+    'afp': 'AFP',
+    'hbsag': 'HBsAg',
+    'albigrade': 'ALBIgrade',
+    'bmi': 'BMI',
+}
+
+
+class PatientData_ER_OP_pre(BaseModel):
+    bclc: float | None = None
+    tumor_number: float | None = None
+    tumor_size: float | None = None
+    k: float | None = None
+    ast: float | None = None
+    afp: float | None = None
+    hbsag: float | None = None
+    albigrade: float | None = None
+    bmi: float | None = None
+
+
+    def dict(self, *args, **kwargs):
+        original_dict = super().dict(*args, **kwargs)
+        return {ER_cli_OP_features[key]: original_dict[key] for key in original_dict if key in ER_cli_OP_features.keys()}

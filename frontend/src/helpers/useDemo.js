@@ -1,6 +1,6 @@
 import { ref, reactive, readonly  } from "vue"
 
-// demo 資料為 RFA0534
+// demo 資料(Case)為 RFA0534
 
 export function useTestCase_ER(){
   const demo_case = reactive({
@@ -56,6 +56,50 @@ export function useTestCase_surv(){
     'weight': 70.0,
     'hcv': 0,
     'tumor_size': 3.5
+  })
+
+  return { demo_case:readonly(demo_case) }
+}
+export function useTestCase_ER_OP(){
+  const demo_case = reactive({
+    'tumor_size': 2.7,
+    // 'lnast': 4.25,
+    'tumor_number': 2,
+    'ishak': 6,
+    'height': 168,
+    'weight': 56.9,
+    'steatosis_grade': 0,
+    'k': 3.6,
+    'ast': 70,
+    'hbsag': 0,
+    'mvi': 0,
+    // 'albigrade': 2,
+    'bclc': 2,
+    'histologic_grade': 3,
+    'afp': 151,
+    'bili': 0.57,
+    'alb': 3.7,
+    // 'bmi':20.16,
+    // 'steatosis_grade2': 0,
+    // 'aimorphology_classification': 0
+  })
+
+  return { demo_case:readonly(demo_case) }
+}
+
+export function useTestCase_ER_OP_pre(){
+  const demo_case = reactive({
+    'tumor_size': 2.7,
+    'tumor_number': 2,
+    'height': 168,
+    'weight': 56.9,
+    'k': 3.6,
+    'ast': 70,
+    'hbsag': 1,
+    'bclc': 1,
+    'afp': 151,
+    'bili': 0.57,
+    'alb': 3.7,
   })
 
   return { demo_case:readonly(demo_case) }

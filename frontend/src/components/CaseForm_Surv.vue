@@ -139,7 +139,11 @@
       </q-dialog>
 
       <!-- 提交按钮 -->
-      <div class="row q-gutter-md justify-end">
+      <div class="row q-gutter-md justify-between">
+      <div class="col-auto">
+        <DownloadExampleButton folderName="OS_Case" />
+      </div>
+      <div class="col-auto row q-gutter-sm">
         <q-btn unelevated color="red" label="Clear" @click="promptClearForm" />
         <q-btn unelevated color="teal-6" type="button" label="Demo" @click="demo" />
         <q-btn unelevated color="teal-6" type="submit" label="Submit" :loading="submitting">
@@ -148,6 +152,7 @@
           </template>
         </q-btn>
       </div>
+    </div>
   </q-form>
 
   <q-dialog v-model="isDialogOpen">
@@ -167,9 +172,13 @@ import { defineComponent, reactive, ref, computed, toRefs, watch } from 'vue'
 import { api } from "boot/axios"
 import { useJobStore_Surv } from 'stores/job'
 import { useTestCase_surv } from '../helpers/useDemo'
+import DownloadExampleButton from './DownloadExampleButton.vue';
 
 export default defineComponent({
   name: 'CaseForm_Surv',
+  components: {
+    DownloadExampleButton
+  },
   emits: ['formSubmitted'],
   props: {
     initialValues: {
